@@ -2,13 +2,11 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { createUser, getByEmail } = require('../models/userModel');
 const { JWT_SECRET } = require('../config/constants');
-const authSchemas = require('../validation/authSchemas');
 
 async function signup(req, res) {
   try {
-    const { error, value } = authSchemas.signup.body.validate(req.body || {}, { abortEarly: false, stripUnknown: true });
-    if (error) return res.status(400).json({ message: 'Validation error', details: error.details.map(d => d.message) });
-    const { name, email, password } = value;
+    const { name, email, password } = req.body || {};
+    if (!name || !email || !password) return res.status(400).json({ message: 'name, email, password are required' });
     const user = await createUser({ name, email, password });
     return res.status(201).json({ user });
   } catch (err) {
@@ -18,9 +16,8 @@ async function signup(req, res) {
 
 async function signin(req, res) {
   try {
-    const { error, value } = authSchemas.signin.body.validate(req.body || {}, { abortEarly: false, stripUnknown: true });
-    if (error) return res.status(400).json({ message: 'Validation error', details: error.details.map(d => d.message) });
-    const { email, password } = value;
+    const { email, password } = req.body || {};
+    if (!email || !password) return res.status(400).json({ message: 'email, password are required' });
     const user = await getByEmail(email);
     if (!user) return res.status(401).json({ message: 'Invalid credentials' });
     const ok = await bcrypt.compare(password, user.passwordHash);
