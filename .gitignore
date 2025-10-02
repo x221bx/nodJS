@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Env
+.env
+
+# Secrets / Keys
+config/serviceAccountKey.json
+
+# Runtime
+server.pid
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+*.DS_Store
+Thumbs.db
+
