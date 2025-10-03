@@ -1,4 +1,4 @@
-# Day 3 API
+ 
 
 Express + Firebase Firestore (users/products/categories) with JWT auth.
 
@@ -35,8 +35,6 @@ Import `postman/Day3.postman_collection.json`. Set `{{email}}` if needed. After 
 Requests validated via Joi in `src/validation/*` and `src/middlewares/validate.js`.
 
 ## GitHub
-
-- Do NOT commit secrets. `config/serviceAccountKey.json` and `.env` are ignored via `.gitignore`. Use `config/serviceAccountKey.example.json` to show structure.
 - Initialize and commit locally:
   - `git init`
   - `git add .`
