@@ -5,12 +5,8 @@ Express + Firebase Firestore (users/products/categories) with JWT auth.
 ## Run
 
 1. Put your Firebase service account at `config/serviceAccountKey.json` (already present in this repo).
-2. Optional: create `.env` with:
-   - `PORT=3000`
-   - `JWT_SECRET=change_me`
-   - `CACHE_TTL_MS=30000`
-3. Install deps: `npm install`
-4. Start: `npm run dev` (or `npm start`)
+2. Install deps: `npm install`
+3. Start: `npm run dev` (or `npm start`)
 
 Base URL: `http://localhost:3000/api`
 
@@ -26,9 +22,6 @@ Base URL: `http://localhost:3000/api`
 
 Products are saved with `createdBy` (logged-in user id) and optional `categoryId`.
 
-## Postman
-
-Import `postman/Day3.postman_collection.json`. Set `{{email}}` if needed. After `Signin`, token is saved to `{{token}}` automatically.
 
 ## Validation
 
